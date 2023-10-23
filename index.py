@@ -39,9 +39,15 @@ while atendimento == True or outroAtendimento == "sim":
     if resposta == "nao":
         outroAtendimento = input("Deseja outro atendimento, digite sim ou nao? ")
         print(outroAtendimento)
-
+      #  3 - Procurar um estudante pelo seu ID e exibir seu registro.
   elif atendimento == "3":
-    print("opção 3")
+       estudanteId = int(input("Por favor, para o buscar os dados do estudante desejado, digite o id: "))
+       for p in lista:
+        if p["id"] == estudanteId:
+          print("O estudantes é ", p["nome"] + " com notas", p["notas"])
+        
+       outroAtendimento = input("Deseja outro atendimento, digite sim ou nao? ")        
+      
   elif atendimento == "4":
     print("opção 4")
     
