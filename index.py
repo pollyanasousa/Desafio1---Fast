@@ -20,7 +20,7 @@ while atendimento == True or outroAtendimento == "sim":
      d["nome"] = input(" Ok!Por favor, digite o nome do estudante: ")
      d["notas"] = (input("Informe a nota do estudante: "))
      lista.append(d.copy())   
-     resposta = input("Deseja continuar, digite sim ou nao: ") 
+     resposta = input("Deseja cadastrar novo estudante, digite sim ou nao: ") 
 
      while resposta == "sim":
        contador += 1
@@ -33,89 +33,83 @@ while atendimento == True or outroAtendimento == "sim":
        if resposta == "nao":
          print("Estudante(s) cadastrado(a)s com sucesso!") 
          outroAtendimento = input("Deseja outro atendimento, digite sim ou nao? ")
-
                  
         # 2 - Exibir uma lista de todos os registros de estudantes.
   elif atendimento == "2":
-    print(f"A lista de todos os registros de estudantes cadastrados é\n{lista}")
+    if len(lista) == 0:
+      print("Sem registros!")
+    for p in lista:
+      print(f"Todos registros: \n {p}\n")
     outroAtendimento = input("Deseja continuar com atendimento, digite sim ou nao? ")
     if outroAtendimento == "nao":
       print("Fim do atendimento, até logo!")
         
       #  3 - Procurar um estudante pelo seu ID e exibir seu registro.
   elif atendimento == "3":
-       estudanteId = int(input("Por favor, para o buscar os dados do estudante desejado, digite o id: "))
-       for p in lista:
-        if p["id"] == estudanteId:
-          print("O estudantes é ", p["nome"] + " com notas", p["notas"])        
-       outroAtendimento = input("Deseja continuar com atendimento, digite sim ou nao? ")       
+      if len(lista) == 0:
+       print("Sem registro!")
+       outroAtendimento = input("Deseja continuar com atendimento, digite sim ou nao?")
        if outroAtendimento == "nao":
-         print("Fim do atendimento, até logo!")                 
+        print("Fim do atendimento, até logo!")
+        break
+      estudanteId = int(input("Por favor, para o buscar os dados do estudante desejado, digite o id: "))
+      for p in lista:
+        if p["id"] == estudanteId:
+          print(f"O(a) estudante é {p}")        
+          outroAtendimento = input("Deseja continuar com atendimento, digite sim ou nao? ")       
+          if outroAtendimento == "nao":
+           print("Fim do atendimento, até logo!")   
       
   elif atendimento == "4":
-    for p in lista:
-      soma += int(p["notas"])
-      media +=1
-    resultado = soma / media   
-    print(f"A média das notas dos estudantes é {resultado}")
-    outroAtendimento = input("Deseja continuar com atendimento, digite sim ou nao?")
-    if outroAtendimento == "nao":
+    if len(lista) == 0:
+      print("Sem registro!")
+      outroAtendimento = input("Deseja continuar com atendimento, digite sim ou nao?")
+      if outroAtendimento == "nao":
+        print("Fim do atendimento, até logo!")
+    else: 
+     for p in lista:
+       soma += int(p["notas"])
+       media +=1
+       resultado = soma / media   
+     print(f"A média das notas dos estudantes é {resultado}")
+     outroAtendimento = input("Deseja continuar com atendimento, digite sim ou nao?")
+     if outroAtendimento == "nao":
       print("Fim do atendimento, até logo!")
 
       # Salvar os registros de estudantes em um arquivo de texto
   elif atendimento == "5":
-    for p in lista:
-      arquivo = str(p)  
-    print("Registros salvos com sucesso!")   
-      # print(f"Aluno {arquivo},\n")
-    outroAtendimento = input("Deseja continuar com atendimento, digite sim ou nao?")
-    if outroAtendimento == "nao":
-      print("Fim do atendimento, até logo!")
-         
+    if len(lista) == 0:
+      print("Sem registro!")
+      outroAtendimento = input("Deseja continuar com atendimento, digite sim ou nao?")
+      if outroAtendimento == "nao":
+       print("Fim do atendimento, até logo!")
+    else: 
+      for p in lista:
+       arquivo = str(p)  
+       print("Registros salvos com sucesso!")   
+      outroAtendimento = input("Deseja continuar com atendimento, digite sim ou nao?")
+      if outroAtendimento == "nao":
+       print("Fim do atendimento, até logo!")
+
+    # Carregar os registros de estudantes de um arquivo de texto     
   elif atendimento == "6":
-    print("opção 6")
+    if len(lista) == 0:
+      print("Sem registro!")
+      outroAtendimento = input("Deseja continuar com atendimento, digite sim ou nao?")
+      if outroAtendimento == "nao":
+        print("Fim do atendimento, até logo!")
+    else:   
+     print(f"Alunos cadastrados {arquivo}")
+     outroAtendimento = input("Deseja continuar com atendimento, digite sim ou nao?")
+     if outroAtendimento == "nao":
+      print("Fim do atendimento, até logo!")
+
   elif atendimento == "7":
     print("Fim do atendimento, até logo!")
     break
+
   else:
     print("Desculpa, não entendi.")
     outroAtendimento = input("Deseja continuar com atendimento, digite sim ou nao?")
     if outroAtendimento == "nao":
       print("Fim do atendimento, até logo!")
-
-          
-    
-
-
-    
-    
-
-
-
-
-
-    
-
-
-      
-    
-
-        
-   
-
-
-
-        
-
-
-  
-
-
-# alunos = {}
-
-# alunos["nome"] = input("Digite o nome do aluno: ")
-# alunos["notas1"] = float("Digite sua primeira nota: ")
-# alunos["notas2"] = float("Digite sua segunda nota: ")
-# alunos["notas3"] = float("Digite sua terceira nota: ")
-# alunos["notas4"] = float("Digite sua quarta e ultima nota: ")
-# print(alunos)
